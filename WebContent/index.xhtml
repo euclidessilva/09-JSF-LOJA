@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui">
+<h:head>
+	<title>Loja de Café</title>
+	<meta name="Guilherme Rodrigues" content="Aluno"></meta>
+</h:head>
+<!-- Add 50px padding top to the body for the navbar -->
+<h:body style="padding-top: 50px; padding-bottom: 20px;">
+	<b:navBar brand="FIAP Café" brandHref="http://www.fiap.com.br"
+		inverse="true" fixed="top">
+		<!--  <b:navbarLinks>
+                <b:navLink value="Link" href="#"></b:navLink>
+                <b:navLink value="Link" href="#"></b:navLink>
+                <b:dropMenu value="Dropdown">
+                    <b:navLink value="Action" href="#"></b:navLink>
+                    <b:navLink value="Another action" href="#"></b:navLink>
+                    <b:navLink value="Something else here" href="#"></b:navLink>
+                    <b:navLink></b:navLink>
+                    <b:navLink header="Nav header"></b:navLink>
+                    <b:navLink value="Separated link" href="#"></b:navLink>
+                    <b:navLink value="One more separated link" href="#"></b:navLink>
+                </b:dropMenu>
+            </b:navbarLinks> -->
+		<h:form styleClass="navbar-form navbar-right">
+			<div class="form-group">
+				<b:inputText placeholder="Email" fieldSize="sm" />
+				<!--input type="text" class="form-control" placeholder="Search"/-->
+			</div>
+			<div class="form-group">
+				<b:inputText placeholder="Password" fieldSize="sm" />
+			</div> 
+                #{' '}
+                <b:commandButton action="a" value="Sign in"
+				look="success" icon="chevron-right" iconAlign="right" />
+		</h:form>
+	</b:navBar>
+	<b:jumbotron style="padding:80px">
+		<b:container>
+			<b:row>
+				<b:column colMd="6">
+					<h1>olá, seja bem vindo!</h1>
+					<p>Esse é um website da aula de Digital FIAP para simular venda
+						de café. Nele faremos a apresentação de cafés consumindo um Web
+						Service Rest.</p>
+					<p>
+						<IMG alt="" src="resources/img/logos.png" style="width: 60%" />
+					</p>
+				</b:column>
+				<b:column colMd="4">
+					<b:carousel id="cCafes" style="width:600px" interval="2500">
+						<b:carouselItem>
+							<img src="resources/img/cafe01.jpg"
+								style="width: 600px; height: 400px" />
+							<b:carouselCaption>
+								<h3>Café Mineiro</h3>
+							</b:carouselCaption>
+						</b:carouselItem>
+						<b:carouselItem>
+							<img src="resources/img/cafe02.jpg"
+								style="width: 600px; height: 400px" />
+							<b:carouselCaption>
+								<h3>Café Paulista</h3>
+							</b:carouselCaption>
+						</b:carouselItem>
+						<b:carouselItem>
+							<img src="resources/img/cafe04.jpg"
+								style="width: 600px; height: 400px" />
+
+							<b:carouselCaption>
+								<h3>Café Carioca</h3>
+							</b:carouselCaption>
+						</b:carouselItem>
+					</b:carousel>
+				</b:column>
+			</b:row>
+		</b:container>
+
+	</b:jumbotron>
+	<b:container>
+		<b:row>
+			<ui:repeat value="#{indexBean.produtos}" var="produto">
+				<b:column col-md="4">
+					<h2>#{produto.nm_produto}</h2>
+					<p>#{produto.ds_produto}</p>
+					<p></p>
+					<h:outputText value="#{produto.vl_preco}" >
+					<f:convertNumber pattern="R$ #,##0.00" locale="pt_BR"
+						type="currency" />
+					</h:outputText>
+					<p>
+						<b:button outcome="" look="warning" value="View details »" />
+					</p>
+				</b:column>
+			</ui:repeat>
+		</b:row>
+		<hr />
+		<footer>
+			<p>© Company 2014</p>
+		</footer>
+	</b:container>
+
+</h:body>
+</html>
