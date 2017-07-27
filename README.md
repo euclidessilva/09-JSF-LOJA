@@ -1,2 +1,2 @@
-CRUD 
-JAva, Hibernate, JSF, Tomcat
+CRUD <br>
+Java, Hibernate, JSF, Tomcat
